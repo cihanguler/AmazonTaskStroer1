@@ -164,11 +164,11 @@ Feature: Facebook sign-up page
     Then the user should be able to sign up
     And credentials should match
     Examples:
-      | mail/phone      | password      | name   | surname    | day | month | year | gender |
-      | test1@gmail.com | Test.3764374! | john   | smith      | 1   | 1     | 2017 | male   |
-      | test2@gmail.com | Cc.20=        | johny  | deep       | 15  | 6     | 2000 | female |
-      | test3@gmail.com | Fc.20212021_  | muster | mustermann | 30  | 12    | 1905 | custom |
-      | test3@gmail.com | Fc.20212021_  | muster | mustermann | 30  | 12    | 1905 | custom |
+      | mail/phone      | password       | name           | surname        | day            | month          | year           | gender         |
+      | test1@gmail.com | Test.3764374!  | john           | smith          | 1              | 1              | 2017           | male           |
+      | test2@gmail.com | Cc.20=         | johny          | deep           | 15             | 6              | 2000           | female         |
+      | test3@gmail.com | Fc.20212021_   | muster         | mustermann     | 30             | 12             | 1905           | custom         |
+      | other examples  | other examples | other examples | other examples | other examples | other examples | other examples | other examples |
 
 
 
