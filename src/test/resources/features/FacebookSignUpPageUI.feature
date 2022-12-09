@@ -142,7 +142,7 @@ Feature: Facebook sign-up page
       | 053536385xx    |
       | other examples |
 
-  @negativeSignUp @signUp @all @InvalidEmail
+  @negativeSignUp @signUp @InvalidEmail
   Scenario Outline: Verify that user is not able to sign up without entering an invalid/no email
     When the user enter valid "surname" "name" "password" but an invalid/no "<mail/phone>"
     Then the re-enter email field is not displayed
