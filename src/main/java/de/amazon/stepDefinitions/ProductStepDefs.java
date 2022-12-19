@@ -9,5 +9,11 @@ public class ProductStepDefs {
     public void theUserAddOfTheSelectedProductToTheBasket(String newQuantity, String selectValue, String productNumber) {
         new ProductPage().defineQuantity(newQuantity, productNumber, selectValue);
         new ProductPage().navigateToCart();
+        new ProductPage().savePriceAndQuantity();
+    }
+
+    @When("The user saves price and quantity")
+    public void the_user_saves_price_and_quantity() {
+        new ProductPage().savePriceAndQuantity();
     }
 }

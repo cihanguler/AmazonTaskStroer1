@@ -1,7 +1,7 @@
 package de.amazon.runners;
 
 import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import io.cucumber.testng.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
                 "html:target/default-html-reports",
                 "rerun:target/rerun.txt"
         },
-        features = "src/test/resources/features/",
+        features = "src/main/resources/features/",
         glue = "de/amazon/stepDefinitions",
         strict = true,
         dryRun = false,

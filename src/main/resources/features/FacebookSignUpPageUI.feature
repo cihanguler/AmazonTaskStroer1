@@ -45,7 +45,7 @@ Feature: Facebook sign-up page
 
   @name @signUp @all
   Scenario Outline: Verify that user is allowed to use only allowed characters on the "name" field
-    When the enter an invalid "<name>"
+    When the user enter an invalid "<name>"
     Then the warning message is displayed
     Examples:
       | name           |
@@ -57,7 +57,7 @@ Feature: Facebook sign-up page
 
   @surname @signUp @all
   Scenario Outline: Verify that user is allowed to use only allowed characters on the "surname" field
-    When the enter an invalid "<surname>"
+    When the user enter an invalid "<surname>"
     Then the warning message is displayed
     Examples:
       | surname          |

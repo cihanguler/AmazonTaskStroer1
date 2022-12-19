@@ -109,4 +109,12 @@ public class BasketPage extends BasePage {
         Assert.assertEquals("Quantity assertion",calculateQuantityOfProducts(), subtotalQuantity());
     }
 
+    public void assertPriceAndQuantityWithSessionStateHandler() {
+        double DELTA = 0.00;
+        BrowserUtils.waitFor(3);
+        double priceExpected= (double) BrowserUtils.getValueOfScenarioNumAddedKey("price");
+        int quantityExpected = (int) BrowserUtils.getValueOfScenarioNumAddedKey("quantity");
+        Assert.assertEquals("Price assertion",priceExpected, getSubtotal(),DELTA);
+        Assert.assertEquals("Quantity assertion",quantityExpected, subtotalQuantity());
+    }
 }
