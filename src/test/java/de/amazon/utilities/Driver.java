@@ -25,7 +25,7 @@ public class Driver {
     public static final String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
     public static final String sauceUserName = ConfigurationReader.get("sauceUserName");
     public static final String sauceAccessKey = ConfigurationReader.get("sauceAccessKey");
-    public static final String sauceURL = "https://" + sauceUserName + ":" + sauceAccessKey + "@ondemand.us-west-1.saucelabs.com:443/wd/hub";
+    public static final String sauceURL = "https://" + sauceUserName + ":" + sauceAccessKey + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
 
     private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>(); //in order to run parallel test with singleton web driver
 
