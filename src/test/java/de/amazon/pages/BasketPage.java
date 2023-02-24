@@ -2,7 +2,6 @@ package de.amazon.pages;
 
 import de.amazon.utilities.BrowserUtils;
 import de.amazon.utilities.Driver;
-import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -108,6 +107,16 @@ public class BasketPage extends BasePage {
         BrowserUtils.waitFor(3);
         Assert.assertEquals("Price assertion",calculateTotalPriceOfProductsNew(), getSubtotal(),DELTA);
         Assert.assertEquals("Quantity assertion",calculateQuantityOfProducts(), subtotalQuantity());
+    }
+
+    public void assertPriceAndQuantityWithSessionStateHandler() {
+        double DELTA = 0.00;
+        BrowserUtils.waitFor(3);
+        double priceExpected= (double) BrowserUtils.getValueOfScenarioNumAddedKey("price");
+        int quantityExpected = (int) BrowserUtils.getValueOfScenarioNumAddedKey("quantity");
+        Assert.assertEquals("Price assertion", priceExpected, getSubtotal(),DELTA);
+        Assert.assertEquals("Quantity assertion",quantityExpected, subtotalQuantity());
+
     }
 
 }
