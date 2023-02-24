@@ -2,10 +2,11 @@ package de.amazon.pages;
 
 import de.amazon.utilities.BrowserUtils;
 import de.amazon.utilities.Driver;
-import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import sun.jvm.hotspot.utilities.Assert;
+
 import java.util.List;
 
 public class BasketPage extends BasePage {
@@ -105,8 +106,8 @@ public class BasketPage extends BasePage {
     public void assertPriceAndQuantity() {
         double DELTA = 0.00;
         BrowserUtils.waitFor(3);
-        Assert.assertEquals("Price assertion",calculateTotalPriceOfProductsNew(), getSubtotal(),DELTA);
-        Assert.assertEquals("Quantity assertion",calculateQuantityOfProducts(), subtotalQuantity());
+        Assert.that(calculateTotalPriceOfProductsNew() == getSubtotal(),"Price assertion");
+        Assert.that(calculateQuantityOfProducts() == subtotalQuantity(),"Quantity assertion");
     }
 
     public void assertPriceAndQuantityWithSessionStateHandler() {
@@ -114,7 +115,8 @@ public class BasketPage extends BasePage {
         BrowserUtils.waitFor(3);
         double priceExpected= (double) BrowserUtils.getValueOfScenarioNumAddedKey("price");
         int quantityExpected = (int) BrowserUtils.getValueOfScenarioNumAddedKey("quantity");
-        Assert.assertEquals("Price assertion",priceExpected, getSubtotal(),DELTA);
-        Assert.assertEquals("Quantity assertion",quantityExpected, subtotalQuantity());
+        Assert.that(priceExpected == getSubtotal(),"Price assertion");
+        Assert.that(quantityExpected == subtotalQuantity(),"Quantity assertion");
+
     }
 }
