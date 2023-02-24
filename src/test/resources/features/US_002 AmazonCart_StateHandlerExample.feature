@@ -1,3 +1,8 @@
+@all
+Feature: Verifying search and cart processes
+
+  Background:
+    When The user navigate to amazon homepage
 
 
 @sessionStateHandler
