@@ -5,7 +5,7 @@ Feature: Verifying search and cart processes
     When The user navigate to amazon homepage
 
 
-@sessionStateHandler
+@sessionStateHandler @wip
 Scenario: Verify product search and cart processes
 And The user search the product "hat for men"
 And The user select the first appearing product
