@@ -1,6 +1,8 @@
 package de.amazon.pages;
 
+import de.amazon.utilities.BrowserUtils;
 import de.amazon.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -46,6 +48,27 @@ public class ProductPage extends BasePage {
 
     public void navigateToCart() {
         addToCartBtn.click();
+    }
+
+    public void savePriceAndQuantity() {
+        BrowserUtils.waitFor(2);
+        int quantity = 1;
+        double price= 0.00;
+        try {
+            quantity = Integer.parseInt(Driver.get().findElement(By.xpath("//input[@id='sw-total-quantity']")).getAttribute("value").trim());
+        } catch (Exception e){
+            logger.info("WARNING: You can choose only 1 quantity of that product");
+        }
+
+        try {
+            price = Double.parseDouble(Driver.get().findElement(By.xpath("//div[@id='sw-subtotal']")).getAttribute("data-price").replace("USD","").trim());
+        } catch (Exception e){
+            logger.info("WARNING: There is no chosen product or price for that product");
+        }
+
+        BrowserUtils.setKeyAndValueWithScenarioNumber("price", price);
+        BrowserUtils.setKeyAndValueWithScenarioNumber("quantity", quantity);
+
     }
 
 }
