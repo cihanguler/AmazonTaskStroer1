@@ -2,6 +2,7 @@ package de.amazon.pages;
 
 import de.amazon.utilities.BrowserUtils;
 import de.amazon.utilities.Driver;
+import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

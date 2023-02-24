@@ -28,4 +28,11 @@ public class BasketStepDefs {
     public void theTotalPriceAndTheQuantityChangesCorrectly() {
         new BasketPage().assertPriceAndQuantity();
     }
+
+    @Then("assertions for the price and quantity are successful in Cart")
+    public void assertions_for_the_price_and_quantity_are_successful_in_cart() {
+        new BasketPage().assertPriceAndQuantityWithSessionStateHandler();
+    }
+}
+
 }
