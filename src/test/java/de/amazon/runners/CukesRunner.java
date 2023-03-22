@@ -6,13 +6,15 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"json:target/cucumber.json",
+        plugin = {"pretty",
+                "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm",
+                "json:target/cucumber.json",
                 "html:target/default-html-reports",
                 "rerun:target/rerun.txt"
         },
         features = "src/test/resources/features/",
         glue = "de/amazon/stepDefinitions",
-        strict = true,
+        //strict = true,
         dryRun = false,
         tags = "@wip"
 )
