@@ -26,6 +26,7 @@ public abstract class BasePage {
      */
     Logger logger = LoggerFactory.getLogger(BasePage.class);
 
+
     @FindBy(id = "twotabsearchtextbox")
     public WebElement searchBox;
 

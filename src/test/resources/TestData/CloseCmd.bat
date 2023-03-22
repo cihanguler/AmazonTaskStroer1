@@ -1,0 +1,2 @@
+
+taskkill /IM cmd.exe
