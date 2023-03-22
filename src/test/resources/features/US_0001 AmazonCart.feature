@@ -6,7 +6,7 @@ Feature: Verifying search and cart processes
 
   @UnregisteredUser @wip
   Scenario: Verify product search and cart processes
-    And The user search the product "hat for men"
+    And The user search the product "hat for women"
     And The user select the first appearing product
     When The user add "2" "quantity" of the selected product "1" to the basket
     And The user navigate to basket page

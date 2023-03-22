@@ -27,9 +27,14 @@ public class Driver {
     public static final String sauceAccessKey = ConfigurationReader.get("sauceAccessKey");
     public static final String sauceURL = "https://" + sauceUserName + ":" + sauceAccessKey + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
 
+    public static final String lambdaUserName = ConfigurationReader.get("lambdaUserName");;
+    public static final String lambdaAccessKey = ConfigurationReader.get("lambdaAccessKey");;
+    public static final String lambdaURL = "https://" + lambdaUserName + ":" + lambdaAccessKey + "@hub.lambdatest.com/wd/hub";
+
+
     private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>(); //in order to run parallel test with singleton web driver
 
-    public static WebDriver get() {
+    public static WebDriver get() throws MalformedURLException {
 
         if (driverPool.get() == null) {
 
@@ -71,7 +76,7 @@ public class Driver {
                     caps.setCapability("extendedDebugging", "true");
                     caps.setCapability("capturePerformance", "true");
 
-                    caps.setCapability("name", ConfigurationReader.get("tester")+", "+ConfigurationReader.get("testName"));
+                    caps.setCapability("name", ConfigurationReader.get("tester") + ", " + ConfigurationReader.get("testName"));
 
                     try {
                         driverPool.set(new RemoteWebDriver(new URL(sauceURL), caps));
@@ -97,17 +102,38 @@ public class Driver {
                     caps.setCapability("browserstack.selenium_version", "3.14.0");
 
                     try {
-                        driverPool.set(new RemoteWebDriver(new URL(browserStackURL),caps));
+                        driverPool.set(new RemoteWebDriver(new URL(browserStackURL), caps));
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case "lamda_chrome":
+                    DesiredCapabilities capabilities = new DesiredCapabilities();
+                    capabilities.setCapability("browserName", "Chrome");
+                    capabilities.setCapability("browserVersion", "110.0");
+                    HashMap<String, Object> ltOptions = new HashMap<String, Object>();
+                    ltOptions.put("username", lambdaUserName);
+                    ltOptions.put("accessKey", lambdaAccessKey);
+                    ltOptions.put("platformName", "Windows 10");
+                    ltOptions.put("project", "Untitled");
+                    capabilities.setCapability("LT:Options", ltOptions);
+
+                    try {
+                        driverPool.set(new RemoteWebDriver(new URL(lambdaURL), capabilities));
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     }
                     break;
             }
+
         }
-        return driverPool.get();
+
+            return driverPool.get();
+        }
+
+        public static void closeDriver () {
+            driverPool.get().quit();
+            driverPool.remove();
+        }
     }
-    public static void closeDriver() {
-        driverPool.get().quit();
-        driverPool.remove();
-    }
-}

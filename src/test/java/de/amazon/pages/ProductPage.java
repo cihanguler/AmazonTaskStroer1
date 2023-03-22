@@ -9,6 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.MalformedURLException;
+
 import static de.amazon.utilities.BrowserUtils.*;
 
 public class ProductPage extends BasePage {
@@ -18,7 +20,7 @@ public class ProductPage extends BasePage {
      *
      * @Param Driver.get()
      */
-    public ProductPage() {
+    public ProductPage() throws MalformedURLException {
         PageFactory.initElements(Driver.get(), this);
     }
 

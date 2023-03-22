@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 
@@ -19,11 +20,11 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//div[@cel_widget_id='MAIN-SEARCH_RESULTS-1']/div/div/div/div/div/div/h2/a")
     public List <WebElement> firstSearchedProductLink;
 
-    public SearchPage() {
+    public SearchPage() throws MalformedURLException {
         PageFactory.initElements(Driver.get(), this);
     }
 
-    public void selectFirstProduct() {
+    public void selectFirstProduct() throws MalformedURLException {
         String url = firstSearchedProductLink.get(0).getAttribute("href");
         Driver.get().navigate().to(url);
     }

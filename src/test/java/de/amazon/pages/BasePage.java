@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.net.MalformedURLException;
+
 public abstract class BasePage {
 
     /**
@@ -15,7 +17,7 @@ public abstract class BasePage {
      *
      * @Param Driver.get()
      */
-    public BasePage() {
+    public BasePage() throws MalformedURLException {
         PageFactory.initElements(Driver.get(), this);
     }
 

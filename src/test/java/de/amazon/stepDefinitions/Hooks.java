@@ -12,6 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
@@ -19,7 +20,7 @@ public class Hooks {
     String browser = ConfigurationReader.get("browser");
 
     @Before
-    public void setUp(Scenario scenario) {
+    public void setUp(Scenario scenario) throws MalformedURLException {
         System.out.println("******** NEW TEST SCENARIO ********");
         System.out.printf("SCENARIO : %s%n", scenario.getName());
         if (!browser.contains("mobile")) {

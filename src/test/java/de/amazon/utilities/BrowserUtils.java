@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.MalformedURLException;
+
 public class BrowserUtils {
 
     public static String getScenarioNumber() {
@@ -55,7 +57,7 @@ public class BrowserUtils {
     }
 
 
-    public static void selectDropDownElementByValue(String value, String productNumber, String valueOfID) {
+    public static void selectDropDownElementByValue(String value, String productNumber, String valueOfID) throws MalformedURLException {
         WebElement dropDownElement = Driver.get().findElement(By.xpath("(//*[@id='"+valueOfID+"'])["+ productNumber+"]"));
         Select dropDownElements = new Select(dropDownElement);
         dropDownElements.selectByValue(value);

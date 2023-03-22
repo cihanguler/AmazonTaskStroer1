@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.net.MalformedURLException;
 import java.util.List;
 
 public class BasketPage extends BasePage {
@@ -15,7 +17,7 @@ public class BasketPage extends BasePage {
      *
      * @Param Driver.get()
      */
-    public BasketPage() {
+    public BasketPage() throws MalformedURLException {
         PageFactory.initElements(Driver.get(), this);
     }
 
